@@ -23,6 +23,10 @@ def front_is_clear():
     pass 
 
 #used only as placeholder function
+def right_is_clear():
+    pass 
+
+#used only as placeholder function
 def at_goal():
     pass 
 
@@ -44,7 +48,13 @@ def jump():
     turn_left()
     
 while not at_goal():
-    if wall_in_front():
-        jump()
-    else:
-        move()
+   if right_is_clear():
+       turn_right()
+       move()
+       continue
+        
+   if front_is_clear():
+       move()
+       continue
+
+   turn_left()
