@@ -1,2 +1,3 @@
 '''
+Flavors: espresso/latte/cappuccino
 '''
