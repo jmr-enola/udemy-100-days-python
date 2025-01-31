@@ -1,11 +1,32 @@
 resources = [
-    {"resource": "Water", "val": 100, "unit": "ml", "unit_prefix": False},
-    {"resource": "Milk", "val": 50, "unit": "ml", "unit_prefix": False},
-    {"resource": "Water", "val": 76, "unit": "g", "unit_prefix": False},
-    {"resource": "Water", "val": 2.5, "unit": "$", "unit_prefix": True},
+    {"resource": "water", "val": 100, "unit": "ml", "unit_prefix": False},
+    {"resource": "milk", "val": 50, "unit": "ml", "unit_prefix": False},
+    {"resource": "water", "val": 76, "unit": "g", "unit_prefix": False},
+    {"resource": "money", "val": 2.5, "unit": "$", "unit_prefix": True},
 ]
 
 def startMachine():
+
+    def checkResources(choice):
+
+        recipes = {
+            "espresso": [25, 0, 35],
+            "latte": [10, 30, 20],
+            "cappuccino": [20, 20, 20]
+        }
+
+        if choice not in recipes.keys():
+            print("Invalid choice! Try again.")
+            return False
+        
+        for i in range(3):
+            if resources[i]["val"] < recipes[choice][i]:
+                print(f"Sorry there is not enough {resources[i]['resource']}.")
+                return False
+
+        return True
+
+
     while (True): 
         
         choice = input("What would you like? (espresso/latte/cappuccino): ").lower()
@@ -22,14 +43,16 @@ def startMachine():
                     print(f'{resource["resource"]}: {resource["val"]}{resource["unit"]}')
             continue
 
-        if choice == "espresso":
-            pass
+        if not checkResources(choice):
+            continue
 
-        if choice == "latte":
-            pass
-
-        if choice == "cappuccino":
-            pass
+        print("Please insert coins... ")
+        insertedCoins = {
+            "quarters": int(input("quarters: ")),
+            "dimes": int(input("dimes: ")),
+            "nickles": int(input("nickles: ")),
+            "pennies": int(input("pennies: ")),
+        }
 
 
 startMachine()
