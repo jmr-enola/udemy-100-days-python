@@ -77,5 +77,7 @@ def startMachine():
         checkPayment(choice, payment)
 
 
+
+
 startMachine()
 
