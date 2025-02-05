@@ -75,8 +75,7 @@ def startMachine():
                 + insertedCoins['pennies'] * 0.10
         
         checkPayment(choice, payment)
-
-
+        
 
 
 startMachine()
