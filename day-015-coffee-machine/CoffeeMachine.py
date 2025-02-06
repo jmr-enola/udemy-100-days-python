@@ -34,12 +34,7 @@ def startMachine():
             "cappuccino": 1.75,
         }
 
-        if payment < prices[choice]:
-            print("Sorry that's not enough money. Money refunded.")
-            return False
-
-        print("Payment sufficient. Processing order...")
-        return True
+        return payment - prices[choice]
 
 
     while (True): 
@@ -74,8 +69,20 @@ def startMachine():
                 + insertedCoins['nickles'] * 0.05  \
                 + insertedCoins['pennies'] * 0.10
         
-        checkPayment(choice, payment)
-        
+        change = checkPayment(choice, payment)
+
+        if change < 0:
+            print("Sorry that's not enough money. Money refunded.")
+            continue
+
+        print("Payment sufficient. Processing order...")
+
+        if change == 0:
+            resources[3]["val"] += payment
+
+        if change > 0:
+            resources[3]["val"] += payment - change
+            print(f'Here is ${change} in change.')
 
 
 startMachine()
