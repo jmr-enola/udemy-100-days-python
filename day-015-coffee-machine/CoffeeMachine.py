@@ -5,15 +5,15 @@ resources = [
     {"resource": "money", "val": 2.5, "unit": "$", "unit_prefix": True},
 ]
 
+recipes = {
+    "espresso": [25, 0, 35],
+    "latte": [10, 30, 20],
+    "cappuccino": [20, 20, 20]
+}
+
 def startMachine():
 
     def checkResources(choice):
-
-        recipes = {
-            "espresso": [25, 0, 35],
-            "latte": [10, 30, 20],
-            "cappuccino": [20, 20, 20]
-        }
 
         if choice not in recipes.keys():
             print("Invalid choice! Try again.")
@@ -36,6 +36,11 @@ def startMachine():
 
         return payment - prices[choice]
 
+    def makeCoffee(choice):
+        for i in range(3):
+            resources[i]["val"] -= recipes[choice][i]
+
+        print("Here is your coffee. Enjoy!")
 
     while (True): 
         
@@ -84,6 +89,7 @@ def startMachine():
             resources[3]["val"] += payment - change
             print(f'Here is ${change} in change.')
 
+        makeCoffee(choice)        
 
 startMachine()
 
