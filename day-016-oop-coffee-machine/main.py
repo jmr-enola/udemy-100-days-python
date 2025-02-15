@@ -1,3 +1,3 @@
-from CoffeeMachineOPP import CoffeeMachine
+from classes.CoffeeMachineOPP import CoffeeMachine
 
 CoffeeMachine().machineOn()
