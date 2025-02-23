@@ -1,9 +1,12 @@
 from rsc.Data import question_data
 from rsc.QuestionModel import Question
+from rsc.QuizBrain import QuizBrain
 
 questions = []
 
 for data in question_data:
     questions.append(Question(**data))
 
-questions[0].printData() 
+quiz = QuizBrain(questions)
+
+quiz.nextQuestion()
