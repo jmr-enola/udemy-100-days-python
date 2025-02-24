@@ -9,4 +9,8 @@ for data in question_data:
 
 quiz = QuizBrain(questions)
 
-quiz.nextQuestion()
+hasNext = True
+while hasNext:
+    hasNext = quiz.nextQuestion()
+
+print(f"\nYour got {quiz.score} out of {len(quiz.q_list)} questions.")
